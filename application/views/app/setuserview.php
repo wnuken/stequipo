@@ -11,7 +11,7 @@
 				<form id="setUser" name="setUser">
 					<div>
 						<div class="col-xs-12 col-sm-12 col-md-6">
-							<div ng-messages="!control.valid && setUser.first_name.$error">
+							<div ng-messages="!control.valid && setUser.first_name.$error" class="text-right">
 								<ng-message when="required">
 									<span class="label label-danger">El campo <strong>Nombre</strong> es requerido</span>
 								</ng-message>
@@ -22,7 +22,7 @@
 							</md-input-container>
 						</div>
 						<div class="col-xs-12 col-sm-12 col-md-6">
-							<div ng-messages="!control.valid && setUser.last_name.$error">
+							<div ng-messages="!control.valid && setUser.last_name.$error" class="text-right">
 								<ng-message when="required">
 									<span class="label label-danger">El campo <strong>Apellido</strong> es requerido</span>
 								</ng-message>
@@ -34,7 +34,7 @@
 						</div>
 						<div class="col-xs-12 col-sm-12 col-md-12"></div>
 						<div class="col-xs-12 col-sm-12 col-md-6">
-							<div ng-messages="!control.valid && setUser.dni.$error">
+							<div ng-messages="!control.valid && setUser.dni.$error" class="text-right">
 								<ng-message when="required">
 									<span class="label label-danger">El campo <strong>NIT/CC</strong> es requerido</span>
 								</ng-message>
@@ -45,7 +45,7 @@
 							</md-input-container>
 						</div>
 						<div class="col-xs-12 col-sm-12 col-md-6">
-							<div ng-messages="(!control.valid && setUser.mail.$error) || setUser.mail.$error">
+							<div ng-messages="(!control.valid && setUser.mail.$error) || setUser.mail.$error" class="text-right">
 								<ng-message when="email">
 									<span class="label label-warning">El campo <strong>E-mail</strong> debe ser valido</span>
 								</ng-message>
@@ -57,7 +57,7 @@
 						</div>
 						<div class="col-xs-12 col-sm-12 col-md-12"></div>
 						<div class="col-xs-12 col-sm-12 col-md-6">
-							<div ng-messages="!control.valid && setUser.address.$error">
+							<div ng-messages="!control.valid && setUser.address.$error" class="text-right">
 								<ng-message when="required">
 									<span class="label label-danger">El campo <strong>Dirección</strong> es requerido</span>
 								</ng-message>
@@ -68,7 +68,7 @@
 							</md-input-container>
 						</div>
 						<div class="col-xs-12 col-sm-12 col-md-6">
-							<div ng-messages="!control.valid && setUser.phone.$error">
+							<div ng-messages="!control.valid && setUser.phone.$error" class="text-right">
 								<ng-message when="required">
 									<span class="label label-danger">El campo <strong>Teléfono</strong> es requerido</span>
 								</ng-message>
@@ -78,9 +78,19 @@
 								<input ng-model="setUserForm.phone" name="phone" type="number" required>
 							</md-input-container>
 						</div>
+						<div class="col-xs-12 col-sm-6 col-md-6" >
+								<md-input-container class="md-block in-table" flex-gt-sm>
+									<label>Rol <span style="color:red;"><b>*</b></span></label>
+									<md-select aria-label="Tipo" ng-model="setUserForm.id_rol" required>
+										<md-option value="1" >Administrador</md-option>
+										<md-option value="2" >Usuario</md-option>
+										<md-option value="3" >Control</md-option>
+									</md-select>
+								</md-input-container> 
+							</div>
 						<div class="col-xs-12 col-sm-12 col-md-12"></div>
-						<div class="col-xs-12 col-sm-12 col-md-6">
-							<div ng-messages="!control.valid && setUser.birthday.$error">
+						<div class="col-xs-12 col-sm-4 col-md-4">
+							<div ng-messages="!control.valid && setUser.birthday.$error" class="text-right">
 								<ng-message when="required">
 									<span class="label label-danger">El campo <strong>Fecha Nacimiento</strong> es requerido</span>
 								</ng-message>
@@ -91,8 +101,8 @@
 							</md-datepicker>
 							<input ng-model="setUserForm.birthday" name="birthday" type="hidden" required>
 						</div>
-						<div class="col-xs-12 col-sm-12 col-md-6">
-							<div ng-messages="!control.valid && setUser.register.$error">
+						<div class="col-xs-12 col-sm-4 col-md-4">
+							<div ng-messages="!control.valid && setUser.register.$error" class="text-right">
 								<ng-message when="required">
 									<span class="label label-danger">El campo <strong>Fecha Nacimiento</strong> es requerido</span>
 								</ng-message>
@@ -104,23 +114,25 @@
 							<input ng-model="setUserForm.register" name="register" type="hidden" required>
 						</div>
 						
-						<div class="col-xs-12 col-sm-12 col-md-12">
+						<div class="col-xs-12 col-sm-4 col-md-4">
 							<div class="form-group has-feedback">
-								<label>Es usuario principal</label>
+								<label>Usuario inicial</label>
 								<md-radio-group aria-label="UPA" ng-model="setUserForm.is_initial" layout="row" required>
 									<md-radio-button value="1" class="md-primary">Si</md-radio-button>
 									<md-radio-button value="2" class="md-primary">No</md-radio-button>
 								</md-radio-group>
 							</div>
 						</div>
-						<div ng-if="setUserForm.parent_user == 2">
+						<div class="col-xs-12 col-sm-12 col-md-12">
+							<br><br>
+						</div>
+						<div ng-if="setUserForm.is_initial == 2">
 							<div class="col-xs-12 col-sm-6 col-md-6" >
 								<md-input-container class="md-block in-table" flex-gt-sm>
 									<label>Usuario Padre<span style="color:red;"><b>*</b></span></label>
 									<md-select aria-label="Tipo" ng-model="setUserForm.parent" required>
-										<md-option value="1" >User 1</md-option>
-										<md-option value="2" >User 2</md-option>
-										<md-option value="3" >User 3</md-option>
+										<md-option ng-repeat="user in Users" value="{{user.id}}" >{{user.first_name}}</md-option>
+							
 									</md-select>
 								</md-input-container> 
 							</div>

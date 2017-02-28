@@ -5,29 +5,28 @@ var stequipoApp = angular.module('stequipoApp',['ngMaterial', 'ngMessages']);
 
 stequipoApp.service('dataService', function($http) {
 	this.getData = function(params, path, callbackFunc){
-		$http({
+		$.ajax({
 			method: 'GET',
 			url: baseUrl + path,
-			params: params
-        /// headers: {'Authorization': 'Token token=xxxxYYYYZzzz'}
-    }).success(function(response){
-    	callbackFunc(response);
-    }).error(function(){
-    	console.log("error");
-    });
-};
+			data: params
+		}).success(function(response){
+			callbackFunc(response);
+		}).error(function(){
+			console.log("error");
+		});
+	};
 
-this.setData = function(params, path, callbackFunc){
-	$.ajax({
-		method: 'POST',
-		url: baseUrl + path,
-		data: params
-	}).success(function(response){
-		callbackFunc(response);
-	}).error(function(){
-		console.log("error");
-	});
-};
+	this.setData = function(params, path, callbackFunc){
+		$.ajax({
+			method: 'POST',
+			url: baseUrl + path,
+			data: params
+		}).success(function(response){
+			callbackFunc(response);
+		}).error(function(){
+			console.log("error");
+		});
+	};
 
 });
 
@@ -44,13 +43,24 @@ stequipoApp.controller('setUser', ['$scope', 'dataService', function($scope, dat
 	$scope.control = {
 		"valid": true
 	};
+
+
+	var url = 'get/user';
+
+	dataService.getData($scope.setUserForm, url, function(dataResponse){
+		if(dataResponse.elements.status === true){
+			$scope.Users = dataResponse.elements.message;
+		}
+		console.log(dataResponse);
+	});
+
 	//$scope.setUserForm.birthday = new Date();
 
 	$scope.saveForm = function(){
 		console.log($scope.setUser.$valid);
 		$scope.control.valid = $scope.setUser.$valid;
 		if($scope.setUser.$valid === true){
-			var url = 'setdata/setuserdata';
+			var url = 'set/userdata';
 
 			dataService.setData($scope.setUserForm, url, function(dataResponse){
 				console.log(dataResponse);
