@@ -5,7 +5,7 @@ var stequipoApp = angular.module('stequipoApp',['ngMaterial', 'ngMessages']);
 
 stequipoApp.service('dataService', function($http) {
 	this.getData = function(params, path, callbackFunc){
-		$.ajax({
+		/*$.ajax({
 			method: 'GET',
 			url: baseUrl + path,
 			data: params
@@ -13,20 +13,37 @@ stequipoApp.service('dataService', function($http) {
 			callbackFunc(response);
 		}).error(function(){
 			console.log("error");
-		});
-	};
+		});*/
 
-	this.setData = function(params, path, callbackFunc){
-		$.ajax({
-			method: 'POST',
+		$http({
+			method: 'GET',
 			url: baseUrl + path,
-			data: params
-		}).success(function(response){
-			callbackFunc(response);
-		}).error(function(){
-			console.log("error");
-		});
-	};
+			params: params
+        	/// headers: {'Authorization': 'Token token=xxxxYYYYZzzz'}
+        }).then(function(response) {
+        	callbackFunc(response);
+        }, function(reason) {
+        	console.log('Failed: ' + reason);
+        }, function(update) {
+        	console.log('Got notification: ' + update);
+        });
+
+
+
+
+    };
+
+    this.setData = function(params, path, callbackFunc){
+    	$.ajax({
+    		method: 'POST',
+    		url: baseUrl + path,
+    		data: params
+    	}).success(function(response){
+    		callbackFunc(response);
+    	}).error(function(){
+    		console.log("error");
+    	});
+    };
 
 });
 
@@ -42,20 +59,22 @@ stequipoApp.controller('Dashboard', ['$scope', '$window', function($scope, $wind
 stequipoApp.controller('setUser', ['$scope', 'dataService', function($scope, dataService) {
 	$('li#menu-user', $generalMenu).addClass('active');
 
-	console.log(baseUrl);
 
 	$scope.setUserForm = {};
 	$scope.control = {
 		"valid": true
 	};
+
+	$scope.dataUser = {};
 	
 
 
 	var url = 'get/user';
 
 	dataService.getData($scope.setUserForm, url, function(dataResponse){
-		if(dataResponse.elements.status === true){
-			$scope.Users = dataResponse.elements.message;
+		console.log(dataResponse);
+		if(typeof dataResponse.data.elements != 'undefined' && dataResponse.data.elements.status === true){
+			$scope.Users = dataResponse.data.elements.message;
 		}
 	});
 
@@ -66,9 +85,7 @@ stequipoApp.controller('setUser', ['$scope', 'dataService', function($scope, dat
 		if($scope.setUser.$valid === true){
 			var url = 'set/userdata';
 			dataService.setData($scope.setUserForm, url, function(dataResponse){
-				$scope.dataUser = {
-					"first_name": "name"
-				};
+				console.log(dataResponse);
 				if(typeof dataResponse.elements.status != 'undefined' && dataResponse.elements.status == true){
 					$scope.dataUser = dataResponse.elements.message;
 					console.log($scope.dataUser);
