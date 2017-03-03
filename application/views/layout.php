@@ -30,7 +30,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="./">
+				<a class="navbar-brand hidden-xs" href="./">
 				<img src="<?php echo base_url("/assets/images/favicon.png"); ?>">
 				Servicio Trabajo en Equipo
 				</a>

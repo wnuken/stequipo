@@ -1,13 +1,10 @@
 <div class="container" ng-controller="setUser">
-<div class="hide" id="base-url"><?php echo base_url(); ?></div>
+	<div class="hide" id="base-url"><?php echo base_url(); ?></div>
 	<div class="col-md-4"></div>
 	<div class="col-md-12">
 		<div class="panel panel-default">
 			<div class="panel-heading">Ingresar Usuario</div>
 			<div class="panel-body">
-				<div ng-if="!control.valid" class="alert alert-danger" role="alert">
-					Complete los campos <strong>Requeridos (*)</strong>
-				</div>
 				<form id="setUser" name="setUser">
 					<div>
 						<div class="col-xs-12 col-sm-12 col-md-6">
@@ -79,15 +76,15 @@
 							</md-input-container>
 						</div>
 						<div class="col-xs-12 col-sm-6 col-md-6" >
-								<md-input-container class="md-block in-table" flex-gt-sm>
-									<label>Rol <span style="color:red;"><b>*</b></span></label>
-									<md-select aria-label="Tipo" ng-model="setUserForm.id_rol" required>
-										<md-option value="1" >Administrador</md-option>
-										<md-option value="2" >Usuario</md-option>
-										<md-option value="3" >Control</md-option>
-									</md-select>
-								</md-input-container> 
-							</div>
+							<md-input-container class="md-block in-table" flex-gt-sm>
+								<label>Rol <span style="color:red;"><b>*</b></span></label>
+								<md-select aria-label="Tipo" ng-model="setUserForm.id_rol" required>
+									<md-option value="1" >Administrador</md-option>
+									<md-option value="2" >Usuario</md-option>
+									<md-option value="3" >Control</md-option>
+								</md-select>
+							</md-input-container> 
+						</div>
 						<div class="col-xs-12 col-sm-12 col-md-12"></div>
 						<div class="col-xs-12 col-sm-4 col-md-4">
 							<div ng-messages="!control.valid && setUser.birthday.$error" class="text-right">
@@ -132,7 +129,7 @@
 									<label>Usuario Padre<span style="color:red;"><b>*</b></span></label>
 									<md-select aria-label="Tipo" ng-model="setUserForm.parent" required>
 										<md-option ng-repeat="user in Users" value="{{user.id}}" >{{user.first_name}}</md-option>
-							
+
 									</md-select>
 								</md-input-container> 
 							</div>
@@ -158,7 +155,30 @@
 					</div>
 
 				</form>
-				
+				<div class="col-md-12">
+					<div ng-if="!control.valid" class="alert alert-danger" role="alert">
+						Complete los campos <strong>Requeridos (*)</strong>
+					</div>
+					<div class="table table-responsive">
+						<table class="table table-hover">
+							<thead> 
+								<tr> <th>#</th>
+									<th>First Name</th>
+									<th>Last Name</th>
+									<th>Username</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<th scope="row">{{($index + 1)}}</th>
+									<td>{{dataUser.first_name}}</td>
+									<td>{{dataUser.first_name}}</td>
+									<td>@mdo</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
