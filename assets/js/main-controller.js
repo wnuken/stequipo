@@ -31,6 +31,19 @@ stequipoApp.service('dataService', function($http) {
     	}, function(update) {
     		console.log('Got notification: ' + update);
     	});
+
+    	/*$http({
+    		method: 'POST',
+    		url: baseUrl + path,
+    		data: params,
+    		headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+    	}).then(function(response) {
+    		callbackFunc(response);
+    	}, function(reason) {
+    		console.log('Failed: ' + reason);
+    	}, function(update) {
+    		console.log('Got notification: ' + update);
+    	});*/
     };
 
 });
@@ -82,12 +95,9 @@ stequipoApp.controller('setUser', ['$scope', '$timeout', 'dataService', function
 		if($scope.setUser.$valid === true){
 			var url = 'set/userdata';
 			dataService.setData($scope.setUserForm, url, function(dataResponse){
-				console.log(dataResponse);
 				if(typeof dataResponse.elements.status != 'undefined' && dataResponse.elements.status == true){
-
 					$timeout(function () {
 						$scope.dataUser = dataResponse.elements.message;
-						console.log($scope.dataUser);
 					}, 500);
 					
 				}else{
@@ -104,5 +114,35 @@ stequipoApp.controller('setUser', ['$scope', '$timeout', 'dataService', function
 }]);
 
 stequipoApp.controller('getGroup', ['$scope', '$timeout', 'dataService', function($scope, $timeout, dataService) {
+	$('li#menu-group', $generalMenu).addClass('active');
 	$('div#getGroupController').removeClass('hide');
+
+	$scope.getUserInfoForm = {};
+	$scope.control = {
+		"valid": true
+	};
+
+	$scope.searchForm = function(){
+		$scope.control.valid = $scope.getUserInfo.$valid;
+		if($scope.getUserInfo.$valid === true){
+			var url = 'get/userinfo';
+			dataService.getData($scope.getUserInfoForm, url, function(dataResponse){
+				console.log(dataResponse);
+				if(typeof dataResponse.data.elements.status != 'undefined' && dataResponse.data.elements.status == true){
+
+					$timeout(function () {
+						$scope.dataUser = dataResponse.data.elements.message;
+					}, 500);
+					
+				}else{
+					///$('div#msg-caratula').html(errorMessages.save);
+				}
+
+			});
+
+		}else{
+			
+		}
+	};
+
 }]);

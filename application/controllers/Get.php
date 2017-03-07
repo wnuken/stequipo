@@ -51,4 +51,22 @@ class Get extends CI_Controller {
 		$data['view'] = "/response/index";
 		$this->load->view($data['view'], $data);
 	}
+
+	public function userinfo()
+	{
+		$params = $this->input->get(NULL, TRUE);
+		$paramsUserInfo = array();
+
+		if(is_array($params) && isset($params['dni'])){
+			$paramsUserInfo = $this->getdata->userInfo($params);
+		}
+
+		
+		$data['data']['elements'] = array(
+			'status' => TRUE,
+			'message' => $paramsUserInfo
+			);
+		$data['view'] = "/response/index";
+		$this->load->view($data['view'], $data);
+	}
 }

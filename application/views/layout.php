@@ -41,7 +41,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				<ul class="nav navbar-nav">
 					<li id="menu-home"><a href="<?php echo base_url(); ?>">Inicio</a></li>
 					<li id="menu-user"><a href="<?php echo base_url("/home/setusuario"); ?>">Agregar Usuario</a></li>
-					<li><a href="<?php echo base_url("/home/getgrupo"); ?>">Administrar grupo</a></li>
+					<li id="menu-group"><a href="<?php echo base_url("/home/getgrupo"); ?>">Administrar grupo</a></li>
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
 						<ul class="dropdown-menu">

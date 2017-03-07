@@ -35,4 +35,16 @@ class Getdata extends CI_Model {
 
 	}
 
+	public function userInfo($params)
+	{
+		$result = FALSE;
+		$this->db->select('*');
+		$this->db->where('dni', $params['dni']);
+		$this->db->limit(1);
+		$query = $this->db->get('user');
+		$items = $query->row_array();
+		$result = $items;
+		return $result;
+	}
+
 }

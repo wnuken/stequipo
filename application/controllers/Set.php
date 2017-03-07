@@ -34,8 +34,8 @@ class Set extends CI_Controller {
 	public function userdata()
 	{
 		$params = $this->input->post(NULL, TRUE);
-
-		/*var_dump(strtotime($params['birthday']));
+		/*var_dump($params);
+		//var_dump(json_decode($params[0], TRUE));
 		die();*/
 
 
