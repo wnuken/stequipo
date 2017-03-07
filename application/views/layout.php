@@ -11,7 +11,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <link rel="icon" href="<?php echo base_url("/assets/images/favicon.png"); ?>">
 <head>
 	<link href="<?php echo base_url("/assets/vendor/bootstrap/css/bootstrap.min.css"); ?>" rel="stylesheet"/>
-	<link href="<?php echo base_url("/assets/vendor/angularjs/material/css/angular-material.min.css"); ?>" rel="stylesheet"/>
+	<!--link href="<?php echo base_url("/assets/vendor/angularjs/material/css/angular-material.min.css"); ?>" rel="stylesheet"/-->
+	<link href="https://cdn.gitcdn.link/cdn/angular/bower-material/v1.1.3/angular-material.css" rel="stylesheet"/>
+	
 	<link href="<?php echo base_url("/assets/css/styles.css"); ?>" rel="stylesheet"/>
 	<meta charset="utf-8">
 	<title>Servicio Trabajo en Equipo</title>
@@ -38,8 +40,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<div id="navbar" class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">
 					<li id="menu-home"><a href="<?php echo base_url(); ?>">Inicio</a></li>
-					<li id="menu-user"><a href="<?php echo base_url("/home/setusuario"); ?>">Ingresar Usuario</a></li>
-					<li><a href="#contact">Ver grupo</a></li>
+					<li id="menu-user"><a href="<?php echo base_url("/home/setusuario"); ?>">Agregar Usuario</a></li>
+					<li><a href="<?php echo base_url("/home/getgrupo"); ?>">Administrar grupo</a></li>
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
 						<ul class="dropdown-menu">
@@ -72,12 +74,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <script src="<?php echo base_url("/assets/vendor/jquery/jquery.2.2.4.min.js"); ?>" rel="stylesheet"></script>
 <script src="<?php echo base_url("/assets/vendor/bootstrap/js/bootstrap.min.js"); ?>" rel="stylesheet"></script>
 
-<script src="<?php echo base_url("/assets/vendor/angularjs/angularjs-1.6.1-min.js"); ?>" rel="stylesheet"></script>
-
+<script src="<?php echo base_url("/assets/vendor/angularjs/angularjs.1.5.5-min.js"); ?>" rel="stylesheet"></script>
 <script src="<?php echo base_url("/assets/vendor/angularjs/material/js/angular-animate.min.js"); ?>" rel="stylesheet"></script>
+<script src="<?php echo base_url("/assets/vendor/angularjs/material/js/angular-route.min.js"); ?>" rel="stylesheet"></script>
 <script src="<?php echo base_url("/assets/vendor/angularjs/material/js/angular-aria.min.js"); ?>" rel="stylesheet"></script>
 <script src="<?php echo base_url("/assets/vendor/angularjs/material/js/angular-messages.min.js"); ?>" rel="stylesheet"></script>
+
 <script src="<?php echo base_url("/assets/vendor/angularjs/material/js/angular-material.min.js"); ?>" rel="stylesheet"></script>
+<!--script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/t-114/svg-assets-cache.js" rel="stylesheet"></script-->
+
 
 <script src="<?php echo base_url("/assets/js/main-controller.js"); ?>" rel="stylesheet"></script>
 </html>

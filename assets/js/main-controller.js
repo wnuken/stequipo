@@ -5,16 +5,6 @@ var stequipoApp = angular.module('stequipoApp',['ngMaterial', 'ngMessages']);
 
 stequipoApp.service('dataService', function($http) {
 	this.getData = function(params, path, callbackFunc){
-		/*$.ajax({
-			method: 'GET',
-			url: baseUrl + path,
-			data: params
-		}).success(function(response){
-			callbackFunc(response);
-		}).error(function(){
-			console.log("error");
-		});*/
-
 		$http({
 			method: 'GET',
 			url: baseUrl + path,
@@ -27,10 +17,6 @@ stequipoApp.service('dataService', function($http) {
         }, function(update) {
         	console.log('Got notification: ' + update);
         });
-
-
-
-
     };
 
     this.setData = function(params, path, callbackFunc){
@@ -38,10 +24,12 @@ stequipoApp.service('dataService', function($http) {
     		method: 'POST',
     		url: baseUrl + path,
     		data: params
-    	}).success(function(response){
+    	}).then(function(response) {
     		callbackFunc(response);
-    	}).error(function(){
-    		console.log("error");
+    	}, function(reason) {
+    		console.log('Failed: ' + reason);
+    	}, function(update) {
+    		console.log('Got notification: ' + update);
     	});
     };
 
@@ -56,7 +44,7 @@ stequipoApp.controller('Dashboard', ['$scope', '$window', function($scope, $wind
 	};
 }]);
 
-stequipoApp.controller('setUser', ['$scope', 'dataService', function($scope, dataService) {
+stequipoApp.controller('setUser', ['$scope', '$timeout', 'dataService', function($scope, $timeout, dataService) {
 	$('li#menu-user', $generalMenu).addClass('active');
 
 
@@ -67,15 +55,24 @@ stequipoApp.controller('setUser', ['$scope', 'dataService', function($scope, dat
 
 	$scope.dataUser = {};
 	
+	$('div#setUserController').removeClass('hide');
 
+	var urlUser = 'get/users';
 
-	var url = 'get/user';
-
-	dataService.getData($scope.setUserForm, url, function(dataResponse){
+	dataService.getData($scope.setUserForm, urlUser, function(dataResponse){
 		console.log(dataResponse);
 		if(typeof dataResponse.data.elements != 'undefined' && dataResponse.data.elements.status === true){
 			$scope.Users = dataResponse.data.elements.message;
-		}
+		};
+	});
+
+	var urlRoles = 'get/roles';
+
+	dataService.getData($scope.setUserForm, urlRoles, function(dataResponse){
+		console.log(dataResponse);
+		if(typeof dataResponse.data.elements != 'undefined' && dataResponse.data.elements.status === true){
+			$scope.Roles = dataResponse.data.elements.message;
+		};
 	});
 
 	//$scope.setUserForm.birthday = new Date();
@@ -87,8 +84,12 @@ stequipoApp.controller('setUser', ['$scope', 'dataService', function($scope, dat
 			dataService.setData($scope.setUserForm, url, function(dataResponse){
 				console.log(dataResponse);
 				if(typeof dataResponse.elements.status != 'undefined' && dataResponse.elements.status == true){
-					$scope.dataUser = dataResponse.elements.message;
-					console.log($scope.dataUser);
+
+					$timeout(function () {
+						$scope.dataUser = dataResponse.elements.message;
+						console.log($scope.dataUser);
+					}, 500);
+					
 				}else{
 					///$('div#msg-caratula').html(errorMessages.save);
 				}
@@ -102,3 +103,6 @@ stequipoApp.controller('setUser', ['$scope', 'dataService', function($scope, dat
 
 }]);
 
+stequipoApp.controller('getGroup', ['$scope', '$timeout', 'dataService', function($scope, $timeout, dataService) {
+	$('div#getGroupController').removeClass('hide');
+}]);

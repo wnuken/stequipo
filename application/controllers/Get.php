@@ -30,9 +30,20 @@ class Get extends CI_Controller {
 		$this->load->view($data['view'], $data);
 	}
 
-	public function user(){
+	public function users()
+	{
+		$params = $this->getdata->Users();
+		$data['data']['elements'] = array(
+			'status' => TRUE,
+			'message' => $params
+			);
+		$data['view'] = "/response/index";
+		$this->load->view($data['view'], $data);
+	}
 
-		$params = $this->getdata->User();
+	public function roles()
+	{
+		$params = $this->getdata->Roles();
 		$data['data']['elements'] = array(
 			'status' => TRUE,
 			'message' => $params

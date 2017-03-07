@@ -10,11 +10,21 @@ class Getdata extends CI_Model {
 		
 	}
 
-	public function User()
+	public function Users()
 	{
 		$result = FALSE;
 		$this->db->select('*');
 		$query = $this->db->get('user');
+		$items = $query->result_array();
+		$result = $items;
+		return $result;
+	}
+
+	public function Roles()
+	{
+		$result = FALSE;
+		$this->db->select('*');
+		$query = $this->db->get('roles');
 		$items = $query->result_array();
 		$result = $items;
 		return $result;

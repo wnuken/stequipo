@@ -29,4 +29,10 @@ class Home extends CI_Controller {
 		$data['view'] = "/app/setuserview";
 		$this->load->view('layout', $data);
 	}
+
+	public function getgrupo()
+	{
+		$data['view'] = "/app/getgroup";
+		$this->load->view('layout', $data);
+	}
 }

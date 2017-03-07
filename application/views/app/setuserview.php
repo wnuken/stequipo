@@ -1,6 +1,5 @@
-<div class="container" ng-controller="setUser">
+<div class="container hide" ng-controller="setUser" id="setUserController">
 	<div class="hide" id="base-url"><?php echo base_url(); ?></div>
-	<div class="col-md-4"></div>
 	<div class="col-md-12">
 		<div class="panel panel-default">
 			<div class="panel-heading">Ingresar Usuario</div>
@@ -77,11 +76,9 @@
 						</div>
 						<div class="col-xs-12 col-sm-6 col-md-6" >
 							<md-input-container class="md-block in-table" flex-gt-sm>
-								<label>Rol <span style="color:red;"><b>*</b></span></label>
+								<label>Rol</label>
 								<md-select aria-label="Tipo" ng-model="setUserForm.id_rol" required>
-									<md-option value="1" >Administrador</md-option>
-									<md-option value="2" >Usuario</md-option>
-									<md-option value="3" >Control</md-option>
+									<md-option ng-repeat="rol in Roles" value="{{rol.id}}" >{{rol.rol_name}}</md-option>
 								</md-select>
 							</md-input-container> 
 						</div>
@@ -93,8 +90,7 @@
 								</ng-message>
 							</div>
 							<label>Fecha Nacimiento</label> <br>
-							<md-datepicker class="md-block" flex-gt-sm ng-model="setUserForm.birthday" ng-required="1">
-								
+							<md-datepicker class="md-block" flex-gt-sm ng-model="setUserForm.birthday" ng-required="1" md-current-view="year">
 							</md-datepicker>
 							<input ng-model="setUserForm.birthday" name="birthday" type="hidden" required>
 						</div>
@@ -106,7 +102,6 @@
 							</div>
 							<label>Fecha de Registro</label> <br>
 							<md-datepicker class="md-block" flex-gt-sm ng-model="setUserForm.register" ng-required="1">
-								
 							</md-datepicker>
 							<input ng-model="setUserForm.register" name="register" type="hidden" required>
 						</div>
@@ -126,14 +121,13 @@
 						<div ng-if="setUserForm.is_initial == 2">
 							<div class="col-xs-12 col-sm-6 col-md-6" >
 								<md-input-container class="md-block in-table" flex-gt-sm>
-									<label>Usuario Padre<span style="color:red;"><b>*</b></span></label>
+									<label>Usuario Padre</label>
 									<md-select aria-label="Tipo" ng-model="setUserForm.parent" required>
 										<md-option ng-repeat="user in Users" value="{{user.id}}" >{{user.first_name}}</md-option>
 
 									</md-select>
 								</md-input-container> 
 							</div>
-
 							<div class="col-xs-12 col-sm-6 col-md-6">
 								<div class="form-group has-feedback">
 									<label>Posición</label>
@@ -155,7 +149,7 @@
 					</div>
 
 				</form>
-				<div class="col-md-12">
+				<div class="col-md-12" ng-if="dataUser.first_name">
 					<div ng-if="!control.valid" class="alert alert-danger" role="alert">
 						Complete los campos <strong>Requeridos (*)</strong>
 					</div>
@@ -163,17 +157,21 @@
 						<table class="table table-hover">
 							<thead> 
 								<tr> <th>#</th>
-									<th>First Name</th>
-									<th>Last Name</th>
-									<th>Username</th>
+									<th>Nombre</th>
+									<th>Apellido</th>
+									<th>Documento</th>
+									<th>Dirección</th>
+									<th>Teléfono</th>
 								</tr>
 							</thead>
 							<tbody>
 								<tr>
-									<th scope="row">{{($index + 1)}}</th>
-									<td>{{dataUser.first_name}}</td>
-									<td>{{dataUser.first_name}}</td>
-									<td>@mdo</td>
+									<th scope="row">1</th>
+									<td>{{ dataUser.first_name }}</td>
+									<td>{{ dataUser.last_name }}</td>
+									<td>{{ dataUser.dni }}</td>
+									<td>{{ dataUser.address }}</td>
+									<td>{{ dataUser.phone }}</td>
 								</tr>
 							</tbody>
 						</table>

@@ -79,6 +79,10 @@ class Set extends CI_Controller {
 			$paramsParentUser['parent'] = $params['parent'];
 		if(isset($params['is_initial']))
 			$paramsParentUser['is_initial'] = $params['is_initial'];
+		if(isset($params['register'])){
+			$params['register'] = strtotime($params['register']);
+			$paramsParentUser['register'] = date('Y-m-d', $params['register']);
+		}
 
 
 
