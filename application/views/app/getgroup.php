@@ -75,6 +75,8 @@
 						<th>Teléfono</th>
 						<th>Nacimiento</th>
 						<th>Registro</th>
+						<th>Grupo</th>
+						<th>Posicicón</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -87,6 +89,8 @@
 						<td>{{ child.phone }}</td>
 						<td>{{ child.birthday }}</td>
 						<td>{{ child.register }}</td>
+						<td>{{ child.group }}</td>
+						<td>{{ child.children }}</td>
 					</tr>
 				</tbody>
 			</table>

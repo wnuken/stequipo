@@ -119,19 +119,29 @@
 							<br><br>
 						</div>
 						<div ng-if="setUserForm.is_initial == 2">
-							<div class="col-xs-12 col-sm-6 col-md-6" >
+							<div class="col-xs-12 col-sm-3 col-md-3" >
 								<md-input-container class="md-block in-table" flex-gt-sm>
-									<label>Usuario Padre</label>
+									<label>Referente</label>
 									<md-select aria-label="Tipo" ng-model="setUserForm.parent" required>
 										<md-option ng-repeat="user in Users" value="{{user.id}}" >{{user.first_name}}</md-option>
-
 									</md-select>
 								</md-input-container> 
 							</div>
+							<div class="col-xs-12 col-sm-3 col-md-3">
+							<div ng-messages="!control.valid && setUser.group.$error" class="text-right">
+								<ng-message when="required">
+									<span class="label label-danger">El campo <strong>Grupo</strong> es requerido</span>
+								</ng-message>
+							</div>
+							<md-input-container class="md-block" flex-gt-sm>
+								<label>Grupo</label>
+								<input ng-model="setUserForm.group" name="group" type="number" required>
+							</md-input-container>
+						</div>
 							<div class="col-xs-12 col-sm-6 col-md-6">
 								<div class="form-group has-feedback">
 									<label>Posición</label>
-									<md-radio-group aria-label="UPA" ng-model="setUserForm.position_user" layout="row" required>
+									<md-radio-group aria-label="UPA" ng-model="setUserForm.children" layout="row" required>
 										<md-radio-button value="1" class="md-primary">Semana 1</md-radio-button>
 										<md-radio-button value="2" class="md-primary">Semana 2</md-radio-button>
 										<md-radio-button value="3" class="md-primary">Semana 3</md-radio-button>

@@ -36,6 +36,8 @@ class Getdata extends CI_Model {
 		$this->db->from(' user usr');
 		$this->db->join('parent_user pu', 'usr.id = pu.user');
 		$this->db->where('pu.parent', $params['id']);
+		$this->db->order_by("group", "asc");
+		$this->db->order_by("children", "asc");
 		$query = $this->db->get();
 		$result = $query->result_array();
 		return $result;
