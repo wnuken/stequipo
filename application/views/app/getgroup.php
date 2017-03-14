@@ -27,8 +27,11 @@
 			</div>
 		</div>
 	</div>
-	<div class="col-md-12">
-		<div class="table table-responsive">
+	<div class="col-md-12" ng-if="dataResponse.status == false">
+		<div class="alert alert-warning" role="alert">No se encontro el usuario <strong>{{ dataResponse.id }}</strong> en le sistema</div>
+	</div>
+	<div class="col-md-12" ng-if="dataUser.dni">
+		<div class="table table-responsive" id="userinfo">
 			<table class="table table-hover">
 				<thead> 
 					<tr>
@@ -38,6 +41,8 @@
 						<th>Documento</th>
 						<th>Dirección</th>
 						<th>Teléfono</th>
+						<th>Nacimiento</th>
+						<th>Registro</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -48,6 +53,40 @@
 						<td>{{ dataUser.dni }}</td>
 						<td>{{ dataUser.address }}</td>
 						<td>{{ dataUser.phone }}</td>
+						<td>{{ dataUser.birthday }}</td>
+						<td>{{ dataUser.register }}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	<div class="col-md-12" ng-if="dataChildren[0].first_name">
+		<div class="table table-responsive" id="userchid">
+		<h3>Referidos</h3>
+			<table class="table table-hover">
+				<thead> 
+					<tr>
+						<th>#</th>
+						<th>Nombre</th>
+						<th>Apellido</th>
+						<th>Documento</th>
+						<th>Dirección</th>
+						<th>Teléfono</th>
+						<th>Nacimiento</th>
+						<th>Registro</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="child in dataChildren">
+						<th scope="row">{{$index + 1}}</th>
+						<td>{{ child.first_name }}</td>
+						<td>{{ child.last_name }}</td>
+						<td>{{ child.dni }}</td>
+						<td>{{ child.address }}</td>
+						<td>{{ child.phone }}</td>
+						<td>{{ child.birthday }}</td>
+						<td>{{ child.register }}</td>
 					</tr>
 				</tbody>
 			</table>

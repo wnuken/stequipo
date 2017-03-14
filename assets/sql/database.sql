@@ -98,6 +98,27 @@ CREATE TABLE IF NOT EXISTS `parent_user` (
 /*!40000 ALTER TABLE `parent_user` DISABLE KEYS */;
 /*!40000 ALTER TABLE `parent_user` ENABLE KEYS */;
 
+
+-- Volcando estructura para tabla stequipo.pay
+DROP TABLE IF EXISTS `pay`;
+CREATE TABLE IF NOT EXISTS `pay` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Id',
+  `user` int(11) DEFAULT NULL COMMENT 'Pay User',
+  `value` varchar(50) DEFAULT NULL COMMENT 'Value',
+  `date` date NOT NULL, COMMENT 'Date',
+  `period` date NOT NULL, COMMENT 'period',
+  `type` int(11) DEFAULT NULL COMMENT 'Type',
+  `bill` varchar(50) DEFAULT NULL COMMENT 'Bill',
+  PRIMARY KEY (`id`),
+  KEY `user` (`user`),
+  CONSTRAINT `FK1_USER_PAY` FOREIGN KEY (`user`) REFERENCES `user` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- Volcando datos para la tabla stequipo.pay: ~0 rows (aproximadamente)
+/*!40000 ALTER TABLE `pay` DISABLE KEYS */;
+/*!40000 ALTER TABLE `pay` ENABLE KEYS */;
+
+
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

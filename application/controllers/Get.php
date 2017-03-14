@@ -55,16 +55,29 @@ class Get extends CI_Controller {
 	public function userinfo()
 	{
 		$params = $this->input->get(NULL, TRUE);
-		$paramsUserInfo = array();
+		$resultUser = array();
+		$resultUser2 = array();
 
 		if(is_array($params) && isset($params['dni'])){
-			$paramsUserInfo = $this->getdata->userInfo($params);
+			$resultUser = $this->getdata->UserByDni($params);
+		}else{
+			$params['dni'] = 0;
 		}
 
-		
+		if(isset($resultUser['id'])){
+			$paramsParent['id'] = $resultUser['id'];
+			$resultUser2 =  $this->getdata->ChildrenByParent($paramsParent);
+		}
+
+		$status = FALSE;
+		if(count($resultUser) > 0)
+			$status = TRUE;
+
 		$data['data']['elements'] = array(
-			'status' => TRUE,
-			'message' => $paramsUserInfo
+			'status' => $status,
+			'id' => $params['dni'],
+			'message' => $resultUser,
+			'message2' => $resultUser2
 			);
 		$data['view'] = "/response/index";
 		$this->load->view($data['view'], $data);

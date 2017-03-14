@@ -121,21 +121,27 @@ stequipoApp.controller('getGroup', ['$scope', '$timeout', 'dataService', functio
 	$scope.control = {
 		"valid": true
 	};
+	$scope.dataResponse = {};
 
 	$scope.searchForm = function(){
 		$scope.control.valid = $scope.getUserInfo.$valid;
 		if($scope.getUserInfo.$valid === true){
+
 			var url = 'get/userinfo';
 			dataService.getData($scope.getUserInfoForm, url, function(dataResponse){
-				console.log(dataResponse);
-				if(typeof dataResponse.data.elements.status != 'undefined' && dataResponse.data.elements.status == true){
+				if(typeof dataResponse.data.elements.status != 'undefined'){
+					$scope.dataResponse = dataResponse.data.elements;
+				}
 
+				if(typeof dataResponse.data.elements.status != 'undefined' && dataResponse.data.elements.status == true){
 					$timeout(function () {
 						$scope.dataUser = dataResponse.data.elements.message;
+						$scope.dataChildren = dataResponse.data.elements.message2;
 					}, 500);
 					
 				}else{
-					///$('div#msg-caratula').html(errorMessages.save);
+					$scope.dataUser = {};
+					$scope.dataChildren = {};
 				}
 
 			});
