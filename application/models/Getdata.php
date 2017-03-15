@@ -46,11 +46,12 @@ class Getdata extends CI_Model {
 	public function UserByDni($params)
 	{
 		$result = FALSE;
-		$select = "usr.id, usr.first_name, usr.last_name, usr.dni, usr.mail, usr.address, usr.phone, usr.other_data, usr.birthday, pu.parent, pu.children, pu.group, pu.is_initial, pu.register";
+		$select = "usr.id, usr.first_name, usr.last_name, usr.dni, usr.mail, usr.address, usr.phone, usr.other_data, usr.birthday, pu.parent, pu.children, pu.group, pu.is_initial, pu.register, au.id_rol";
 		$this->db->select($select);
 		$this->db->from('user usr');
 		$this->db->join('parent_user pu', 'usr.id = pu.user');
-		$this->db->where('dni', $params['dni']);
+		$this->db->join('admin_user au', 'usr.id_admin_user = au.id');
+		$this->db->where('usr.dni', $params['dni']);
 		$this->db->limit(1);
 		$query = $this->db->get();
 		$result = $query->row_array();

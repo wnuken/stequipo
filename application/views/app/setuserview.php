@@ -7,14 +7,14 @@
 				<form id="setUser" name="setUser">
 					<div>
 						<div class="col-xs-12 col-sm-12 col-md-6">
-							<div ng-messages="!control.valid && setUser.first_name.$error" class="text-right">
+							<div ng-messages="!control.valid && setUser.dni.$error" class="text-right">
 								<ng-message when="required">
-									<span class="label label-danger">El campo <strong>Nombre</strong> es requerido</span>
+									<span class="label label-danger">El campo <strong>NIT/CC</strong> es requerido</span>
 								</ng-message>
 							</div>
 							<md-input-container class="md-block" flex-gt-sm>
-								<label>Nombre</label>
-								<input ng-model="setUserForm.first_name" name="first_name" type="text" required>
+								<label>NIT/CC</label>
+								<input ng-model="setUserForm.dni" name="dni" type="text" required ng-change="getUser()">
 							</md-input-container>
 						</div>
 						<div class="col-xs-12 col-sm-12 col-md-6">
@@ -30,14 +30,14 @@
 						</div>
 						<div class="col-xs-12 col-sm-12 col-md-12"></div>
 						<div class="col-xs-12 col-sm-12 col-md-6">
-							<div ng-messages="!control.valid && setUser.dni.$error" class="text-right">
+							<div ng-messages="!control.valid && setUser.first_name.$error" class="text-right">
 								<ng-message when="required">
-									<span class="label label-danger">El campo <strong>NIT/CC</strong> es requerido</span>
+									<span class="label label-danger">El campo <strong>Nombre</strong> es requerido</span>
 								</ng-message>
 							</div>
 							<md-input-container class="md-block" flex-gt-sm>
-								<label>NIT/CC</label>
-								<input ng-model="setUserForm.dni" name="dni" type="text" required>
+								<label>Nombre</label>
+								<input ng-model="setUserForm.first_name" name="first_name" type="text" required>
 							</md-input-container>
 						</div>
 						<div class="col-xs-12 col-sm-12 col-md-6">
@@ -128,16 +128,16 @@
 								</md-input-container> 
 							</div>
 							<div class="col-xs-12 col-sm-3 col-md-3">
-							<div ng-messages="!control.valid && setUser.group.$error" class="text-right">
-								<ng-message when="required">
-									<span class="label label-danger">El campo <strong>Grupo</strong> es requerido</span>
-								</ng-message>
+								<div ng-messages="!control.valid && setUser.group.$error" class="text-right">
+									<ng-message when="required">
+										<span class="label label-danger">El campo <strong>Grupo</strong> es requerido</span>
+									</ng-message>
+								</div>
+								<md-input-container class="md-block" flex-gt-sm>
+									<label>Grupo</label>
+									<input ng-model="setUserForm.group" name="group" type="number" required>
+								</md-input-container>
 							</div>
-							<md-input-container class="md-block" flex-gt-sm>
-								<label>Grupo</label>
-								<input ng-model="setUserForm.group" name="group" type="number" required>
-							</md-input-container>
-						</div>
 							<div class="col-xs-12 col-sm-6 col-md-6">
 								<div class="form-group has-feedback">
 									<label>Posición</label>
@@ -152,7 +152,7 @@
 						</div>
 						<div class="col-xs-12 col-sm-12 col-md-12"></div>
 						
-						<md-button class="md-raised md-primary pull-right" ng-click="saveForm()">
+						<md-button class="md-raised md-primary pull-right" ng-click="saveForm()" type="submit">
 							<i class="glyphicon glyphicon-floppy-save"></i> Guardar 
 						</md-button>
 						
@@ -163,7 +163,10 @@
 					<div ng-if="!control.valid" class="alert alert-danger" role="alert">
 						Complete los campos <strong>Requeridos (*)</strong>
 					</div>
-					<div class="table table-responsive">
+					<div class="table table-responsive" ng-if="control.send">
+						<div class="alert alert-info" role="alert">
+							<strong>Se guradaron los datos correctamente</strong>
+						</div>
 						<table class="table table-hover">
 							<thead> 
 								<tr> <th>#</th>
