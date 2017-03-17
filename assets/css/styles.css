@@ -3,13 +3,16 @@
 html {
   position: relative;
   min-height: 100%;
+  background: #fff;
 }
+
 body {
   /* Margin bottom by footer height */
   margin-bottom: 60px;
 }
+
 .footer {
-  position: absolute;
+  position: relative;
   bottom: 0;
   width: 100%;
   /* Set the fixed height of the footer here */
@@ -22,9 +25,10 @@ body {
 -------------------------------------------------- */
 /* Not required for template or sticky footer method. */
 
-body > .container {
+body > .container, body >  .container-fluid {
   padding: 60px 15px 0;
 }
+
 .container .text-muted {
   margin: 20px 0;
 }
@@ -39,9 +43,21 @@ code {
 }
 
 .navbar-brand>img {
-    display: block;
-    width: 69px;
-    float: left;
-    top: -26px;
-    position: relative;
+  display: block;
+  width: 69px;
+  float: left;
+  top: -26px;
+  position: relative;
+}
+
+.md-datepicker-calendar-pane.md-pane-open {
+  z-index: 1100;
+}
+
+.md-select-menu-container.md-active {
+  z-index: 1100;
+}
+
+.progress-xs {
+  height: 5px;
 }

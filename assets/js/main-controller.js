@@ -57,6 +57,16 @@ stequipoApp.controller('Dashboard', ['$scope', '$window', function($scope, $wind
 	};
 }]);
 
+stequipoApp.controller('Users', ['$scope', '$window', function($scope, $window) {
+	console.log("usuarios");
+	$('li#menu-users', $generalMenu).addClass('active');
+
+	$scope.goUrl = function(params){
+		console.log(params);
+		$window.open(params.url, "_self");
+	};
+}]);
+
 stequipoApp.controller('setUser', ['$scope', '$timeout', 'dataService', function($scope, $timeout, dataService) {
 	$('li#menu-user', $generalMenu).addClass('active');
 
@@ -130,10 +140,6 @@ stequipoApp.controller('setUser', ['$scope', '$timeout', 'dataService', function
 
 			});
 		};
-
-		
-
-		
 	};
 
 	$scope.saveForm = function(){
@@ -145,6 +151,7 @@ stequipoApp.controller('setUser', ['$scope', '$timeout', 'dataService', function
 					$scope.control.send = true;
 					$timeout(function () {
 						$scope.dataUser = dataResponse.elements.message;
+						$scope.setUserForm = {};
 					}, 500);
 					
 				}else{

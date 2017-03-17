@@ -24,6 +24,12 @@ class Home extends CI_Controller {
 		$this->load->view('layout', $data);
 	}
 
+	public function usuarios()
+	{
+		$data['view'] = "/app/users";
+		$this->load->view('layout', $data);
+	}
+
 	public function setusuario()
 	{
 		$data['view'] = "/app/setuserview";

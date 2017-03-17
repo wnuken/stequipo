@@ -13,7 +13,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<link href="<?php echo base_url("/assets/vendor/bootstrap/css/bootstrap.min.css"); ?>" rel="stylesheet"/>
 	<!--link href="<?php echo base_url("/assets/vendor/angularjs/material/css/angular-material.min.css"); ?>" rel="stylesheet"/-->
 	<link href="https://cdn.gitcdn.link/cdn/angular/bower-material/v1.1.3/angular-material.css" rel="stylesheet"/>
-	
+	<link href="<?php echo base_url("/assets/css/spacelab.css"); ?>" rel="stylesheet"/>
 	<link href="<?php echo base_url("/assets/css/styles.css"); ?>" rel="stylesheet"/>
 	<meta charset="utf-8">
 	<title>Servicio Trabajo en Equipo</title>
@@ -40,7 +40,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<div id="navbar" class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">
 					<li id="menu-home"><a href="<?php echo base_url(); ?>">Inicio</a></li>
-					<li id="menu-user"><a href="<?php echo base_url("/home/setusuario"); ?>">Agregar Usuario</a></li>
+					<li id="menu-user"><a href="<?php echo base_url("/home/usuarios"); ?>">Usuarios</a></li>
 					<li id="menu-group"><a href="<?php echo base_url("/home/getgrupo"); ?>">Administrar grupo</a></li>
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
@@ -64,11 +64,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	}
 	?>  
 	
-	<!--footer class="footer">
+	<footer class="footer">
 		<div class="container">
-			<p class="text-muted">Place sticky footer content here.</p>
+			<p class="text-muted">STE S.A.S. - Servicio Trabajo en Equipo - Todos los derechos Reservados</p>
 		</div>
-	</footer-->
+	</footer>
 
 </body>
 <script src="<?php echo base_url("/assets/vendor/jquery/jquery.2.2.4.min.js"); ?>" rel="stylesheet"></script>

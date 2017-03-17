@@ -7,9 +7,14 @@
 				<form id="getUserInfo" name="getUserInfo">
 					<div>
 						<div class="col-xs-12 col-sm-12 col-md-12">
+							<div ng-messages="!control.valid && getUserInfoForm.dni.$error" class="text-right">
+								<ng-message when="required">
+									<span class="label label-danger">El campo <strong>NIT/CC</strong> es requerido</span>
+								</ng-message>
+							</div>
 							<md-input-container class="md-block" flex-gt-sm>
 								<label>Escribir documento del usuario</label>
-								<input ng-model="getUserInfoForm.dni" name="dni" type="text">
+								<input ng-model="getUserInfoForm.dni" name="dni" type="number" required>
 							</md-input-container>
 						</div>
 						<!--div class="col-xs-12 col-sm-12 col-md-6">
