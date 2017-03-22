@@ -43,12 +43,12 @@ code {
   font-size: 80%;
 }
 
-.navbar-brand>img {
-  display: block;
-  width: 69px;
-  float: left;
-  top: -26px;
-  position: relative;
+.navbar-brand > img {
+    display: block;
+    width: 178px;
+    float: left;
+    top: -14px;
+    position: relative;
 }
 
 .md-datepicker-calendar-pane.md-pane-open {
@@ -61,4 +61,29 @@ code {
 
 .progress-xs {
   height: 5px;
+}
+
+.main-side-bar {
+    background-color: #222d32;
+    left: 0px;
+    position: absolute;
+    min-width: 235px;
+    top: -8px;
+    height: 2000px;
+}
+
+.list-group-item.active, .list-group-item.active:hover, .list-group-item.active:focus {
+    z-index: 2;
+    color: #fff;
+    background-color: #1e282c;
+    border-color: #1e282c;
+}
+
+.list-group-item {
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+    margin-bottom: -1px;
+    background-color: #222d32;
+    border: 1px solid #222d32;
 }

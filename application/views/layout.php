@@ -33,8 +33,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<span class="icon-bar"></span>
 				</button>
 				<a class="navbar-brand hidden-xs" href="./">
-				<img src="<?php echo base_url("/assets/images/favicon.png"); ?>">
-				Servicio Trabajo en Equipo
+				<img src="<?php echo base_url("/assets/images/logo-2.png"); ?>">
 				</a>
 			</div>
 			<div id="navbar" class="collapse navbar-collapse">
