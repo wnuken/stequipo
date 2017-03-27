@@ -44,11 +44,11 @@ code {
 }
 
 .navbar-brand > img {
-    display: block;
-    width: 178px;
-    float: left;
-    top: -14px;
-    position: relative;
+  display: block;
+  width: 178px;
+  float: left;
+  top: -14px;
+  position: relative;
 }
 
 .md-datepicker-calendar-pane.md-pane-open {
@@ -64,26 +64,83 @@ code {
 }
 
 .main-side-bar {
-    background-color: #222d32;
-    left: 0px;
-    position: absolute;
-    min-width: 235px;
-    top: -8px;
-    height: 2000px;
+  background-color: #222d32;
+  left: 0px;
+  position: absolute;
+  min-width: 235px;
+  top: -8px;
+  height: 2000px;
 }
 
 .list-group-item.active, .list-group-item.active:hover, .list-group-item.active:focus {
-    z-index: 2;
-    color: #fff;
-    background-color: #1e282c;
-    border-color: #1e282c;
+  z-index: 2;
+  color: #fff;
+  background-color: #1e282c;
+  border-color: #1e282c;
 }
 
 .list-group-item {
-    position: relative;
-    display: block;
-    padding: 10px 15px;
-    margin-bottom: -1px;
+  position: relative;
+  display: block;
+  padding: 10px 15px;
+  margin-bottom: -1px;
+  background-color: #222d32;
+  border: 1px solid #222d32;
+}
+
+
+li.user-header {
+  height: 75px;
+  padding: 10px;
+  text-align: center;
+  background-color: #1e282c;
+  color: #fff;
+  border-color: #1e282c;
+}
+
+a {
+    color: #222d32;
+}
+
+a:hover, a:focus {
+    color: #cd0200;
+      text-decoration: none;
+}
+
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+    color: #1e282c;
+}
+
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+    color: #1e282c;
+}
+
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+    color: #1e282c;
+    background-color: #ccc;
+}
+
+
+
+.main-sidebar {
     background-color: #222d32;
-    border: 1px solid #222d32;
+}
+
+
+.main-sidebar, .left-side {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding-top: 50px;
+    min-height: 100%;
+    width: 230px;
+    z-index: 810;
+    -webkit-transition: -webkit-transform .3s ease-in-out,width .3s ease-in-out;
+    -moz-transition: -moz-transform .3s ease-in-out,width .3s ease-in-out;
+    -o-transition: -o-transform .3s ease-in-out,width .3s ease-in-out;
+    transition: transform .3s ease-in-out,width .3s ease-in-out;
+}
+
+.sidebar {
+    padding-bottom: 10px;
 }

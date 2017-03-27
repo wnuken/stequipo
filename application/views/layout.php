@@ -33,7 +33,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<span class="icon-bar"></span>
 				</button>
 				<a class="navbar-brand hidden-xs" href="./">
-				<img src="<?php echo base_url("/assets/images/logo-2.png"); ?>">
+					<img src="<?php echo base_url("/assets/images/logo-2.png"); ?>">
 				</a>
 			</div>
 			<div id="navbar" class="collapse navbar-collapse">
@@ -41,16 +41,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<li id="menu-home"><a href="<?php echo base_url(); ?>">Inicio</a></li>
 					<li id="menu-user"><a href="<?php echo base_url("/home/usuarios"); ?>">Usuarios</a></li>
 					<li id="menu-group"><a href="<?php echo base_url("/home/getgrupo"); ?>">Administrar grupo</a></li>
+					
+				</ul>
+
+				<ul class="nav navbar-nav navbar-right">
 					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="glyphicon glyphicon-user"></i> Usuario <span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><a href="#">Action</a></li>
-							<li><a href="#">Another action</a></li>
-							<li><a href="#">Something else here</a></li>
-							<li role="separator" class="divider"></li>
-							<li class="dropdown-header">Nav header</li>
-							<li><a href="#">Separated link</a></li>
-							<li><a href="#">One more separated link</a></li>
+							<li class="user-header">
+								<div class="text-center">
+									<i class="glyphicon glyphicon-user" style="font-size: 60px;"></i>
+								</div>
+							</li>
+							<li><a class="users-list-name" href="#">Alexander Pierce</a>
+								<p><span class="users-list-date">Setting</span></p>
+							</li>
+							<li><a href="#">Perfil</a></li>
+							<li><a href="#">Cerrar Sesion</a></li>
 						</ul>
 					</li>
 				</ul>
