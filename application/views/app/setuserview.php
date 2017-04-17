@@ -84,17 +84,6 @@
 						</div>
 						<div class="col-xs-12 col-sm-12 col-md-12"></div>
 						<div class="col-xs-12 col-sm-4 col-md-4">
-							<div ng-messages="!control.valid && setUser.birthday.$error" class="text-right">
-								<ng-message when="required">
-									<span class="label label-danger">El campo <strong>Fecha Nacimiento</strong> es requerido</span>
-								</ng-message>
-							</div>
-							<label>Fecha Nacimiento</label> <br>
-							<md-datepicker class="md-block" flex-gt-sm ng-model="setUserForm.birthday" ng-required="1" md-current-view="year">
-							</md-datepicker>
-							<input ng-model="setUserForm.birthday" name="birthday" type="hidden" required>
-						</div>
-						<div class="col-xs-12 col-sm-4 col-md-4">
 							<div ng-messages="!control.valid && setUser.register.$error" class="text-right">
 								<ng-message when="required">
 									<span class="label label-danger">El campo <strong>Fecha Nacimiento</strong> es requerido</span>

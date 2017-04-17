@@ -3,12 +3,12 @@
 html {
   position: relative;
   min-height: 100%;
-  background: #fff;
 }
 
 body {
   /* Margin bottom by footer height */
   margin-bottom: 60px;
+  background: #222d32;
 }
 
 .footer {
@@ -63,13 +63,20 @@ code {
   height: 5px;
 }
 
+.main-side-bar-container {
+  width: 235px;
+}
+
+.main-side-bar1-container {
+  background: #fff;
+}
+
 .main-side-bar {
   background-color: #222d32;
   left: 0px;
   position: absolute;
   min-width: 235px;
   top: -8px;
-  height: 2000px;
 }
 
 .list-group-item.active, .list-group-item.active:hover, .list-group-item.active:focus {

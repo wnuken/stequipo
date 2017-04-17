@@ -27,50 +27,27 @@ CREATE TABLE IF NOT EXISTS `ste_roles` (
 -- Volcando datos para la tabla stequipo.ste_roles: ~0 rows (aproximadamente)
 /*!40000 ALTER TABLE `ste_roles` DISABLE KEYS */;
 INSERT INTO `ste_roles` (`id_rol`, `rol_name`, `description`, `available`, `unavailable`) VALUES
-  (1, 'Administrador', 'Usario Administrador', 'Allow', 'Disallow'),
-  (2, 'Usuario', 'Usario Multinivel', 'Allow', 'Disallow'),
-  (3, 'Control', 'Usario Controlador', 'Allow', 'Disallow');
+(1, 'Administrador', 'Usario Administrador', 'Allow', 'Disallow'),
+(2, 'Usuario', 'Usario Multinivel', 'Allow', 'Disallow'),
+(3, 'Control', 'Usario Controlador', 'Allow', 'Disallow');
 /*!40000 ALTER TABLE `ste_roles` ENABLE KEYS */;
 
-
--- Volcando estructura para tabla stequipo.ste_login
-DROP TABLE IF EXISTS `ste_login`;
-CREATE TABLE IF NOT EXISTS `ste_login` (
-  `id_login` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Id User',
-  `user` varchar(50) DEFAULT NULL COMMENT 'User',
-  `mail` varchar(50) DEFAULT NULL COMMENT 'e-amil',
-  `password` varchar(255) DEFAULT NULL COMMENT 'Password',
-  `idrol` int(11) DEFAULT NULL COMMENT 'Id Rol',
-  PRIMARY KEY (`id_login`),
-  KEY `idrol` (`idrol`),
-  CONSTRAINT `FK1_ID_ROL` FOREIGN KEY (`idrol`) REFERENCES `roles` (`id_rol`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- Volcando datos para la tabla stequipo.ste_login: ~1 rows (aproximadamente)
-/*!40000 ALTER TABLE `ste_login` DISABLE KEYS */;
-INSERT INTO `ste_login` (`id_login`, `user`, `mail`, `password`, `idrol`) VALUES
-  (1, 'admin', 'brisaning@gmail.com', 'admin', 1);
-/*!40000 ALTER TABLE `ste_login` ENABLE KEYS */;
 
 -- Volcando estructura para tabla stequipo.ste_user
 DROP TABLE IF EXISTS `ste_user`;
 CREATE TABLE IF NOT EXISTS `ste_user` (
   `id_user` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Id',
-  `idlogin` int(11) NOT NULL DEFAULT '0' COMMENT 'Id Admin User',
+  `idrol` int(11) DEFAULT NULL COMMENT 'Id Rol',
   `codcliente` varchar(6) NOT NULL DEFAULT '0' COMMENT 'Customer Code',
-  `nombre` varchar(50) DEFAULT NULL COMMENT 'Name',
-  `razonsocial` varchar(50) DEFAULT NULL COMMENT 'Company',
-  `cifnif` varchar(50) NOT NULL DEFAULT '0' COMMENT 'Document Identification',
-  `email` varchar(50) DEFAULT NULL COMMENT 'E-Mail',
-  `direccion` varchar(50) DEFAULT NULL COMMENT 'Address',
-  `telefono1` varchar(50) DEFAULT NULL COMMENT 'Phone',
+  `cifnif` varchar(20) NOT NULL DEFAULT '0' COMMENT 'Document Identification',
+  `user` varchar(50) DEFAULT NULL COMMENT 'User',
+  `password` varchar(255) DEFAULT NULL COMMENT 'Password',
   `other_data` text COMMENT 'Others data json',
-  `birthday` date NOT NULL,
   PRIMARY KEY (`id_user`),
   UNIQUE KEY `cifnif` (`cifnif`),
-  KEY `idlogin` (`idlogin`),
   KEY `codcliente` (`codcliente`),
-  CONSTRAINT `FK1_ADMIN_USER` FOREIGN KEY (`idlogin`) REFERENCES `ste_login` (`id_login`) ON DELETE CASCADE
+  KEY `idrol` (`idrol`),
+  CONSTRAINT `FK1_ID_ROL` FOREIGN KEY (`idrol`) REFERENCES `ste_roles` (`id_rol`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Volcando datos para la tabla stequipo.ste_user: ~0 rows (aproximadamente)
@@ -103,15 +80,15 @@ CREATE TABLE IF NOT EXISTS `ste_parent` (
 DROP TABLE IF EXISTS `ste_pay`;
 CREATE TABLE IF NOT EXISTS `ste_pay` (
   `id_pay` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Id',
-  `user` int(11) DEFAULT NULL COMMENT 'Pay User',
+  `idparent` int(11) DEFAULT NULL COMMENT 'Pay User',
   `value` varchar(50) DEFAULT NULL COMMENT 'Value',
   `date` date NOT NULL COMMENT 'Date',
   `period` date NOT NULL COMMENT 'period',
   `type` int(11) DEFAULT NULL COMMENT 'Type',
   `bill` varchar(50) DEFAULT NULL COMMENT 'Bill',
   PRIMARY KEY (`id_pay`),
-  KEY `user` (`user`),
-  CONSTRAINT `FK1_USER_PAY` FOREIGN KEY (`user`) REFERENCES `ste_user` (`id_user`)
+  KEY `idparent` (`idparent`),
+  CONSTRAINT `FK1_USER_PAY` FOREIGN KEY (`idparent`) REFERENCES `ste_parent` (`id_parent`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Volcando datos para la tabla stequipo.ste_pay: ~0 rows (aproximadamente)

@@ -13,7 +13,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<link href="<?php echo base_url("/assets/vendor/bootstrap/css/bootstrap.min.css"); ?>" rel="stylesheet"/>
 	<!--link href="<?php echo base_url("/assets/vendor/angularjs/material/css/angular-material.min.css"); ?>" rel="stylesheet"/-->
 	<link href="https://cdn.gitcdn.link/cdn/angular/bower-material/v1.1.3/angular-material.css" rel="stylesheet"/>
-	<link href="<?php echo base_url("/assets/css/spacelab.css"); ?>" rel="stylesheet"/>
+	<link href="<?php echo base_url("/assets/vendor/bootstrap/css/spacelab.css"); ?>" rel="stylesheet"/>
 	<link href="<?php echo base_url("/assets/css/styles.css"); ?>" rel="stylesheet"/>
 	<meta charset="utf-8">
 	<title>Servicio Trabajo en Equipo</title>

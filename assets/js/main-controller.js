@@ -102,7 +102,7 @@ stequipoApp.controller('setUser', ['$scope', '$timeout', 'dataService', function
 		$scope.control.send = false;
 		var url = 'get/userinfo';
 		var dniValue = $scope.setUserForm.cifnif;
-		if(dniValue.length > 5){
+		if(typeof dniValue != 'undefined' && dniValue.length > 5){
 			dataService.getData($scope.setUserForm, url, function(dataResponse){
 				if(typeof dataResponse.data.elements.status != 'undefined' && dataResponse.data.elements.status == true){
 					$timeout(function () {
@@ -113,10 +113,7 @@ stequipoApp.controller('setUser', ['$scope', '$timeout', 'dataService', function
 							"email": dataResponse.data.elements.message.email,
 							"direccion": dataResponse.data.elements.message.direccion,
 							"telefono1": parseInt(dataResponse.data.elements.message.telefono1),
-							// "is_initial": dataResponse.data.elements.message.is_initial,
-							"birthday": new Date(dataResponse.data.elements.message.birthday),
 							"fechaalta": new Date(dataResponse.data.elements.message.fechaalta)
-							// "id_rol": '2'
 						};
 
 						var group = parseInt(dataResponse.data.elements.message.group);

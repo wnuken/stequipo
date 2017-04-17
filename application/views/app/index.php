@@ -23,7 +23,7 @@
 		</div-->
 
 		<div class="row">
-		<div class="col-md-2">
+		<div class="col-md-2 main-side-bar-container">
 			<aside class="main-sidebar">
 				<!-- sidebar: style can be found in sidebar.less -->
 				<section class="sidebar">
@@ -51,7 +51,7 @@
 
 
 
-			<div class="col-md-10">
+			<div class="col-md-10 main-side-bar1-container">
 				<div class="row">
 					<div class="col-xs-12 col-sm-12 col-md-12">
 						<legend>Inicio</legend>
