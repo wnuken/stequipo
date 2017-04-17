@@ -58,16 +58,16 @@ class Get extends CI_Controller {
 		$resultUser = array();
 		$resultUser2 = array();
 
-		if(is_array($params) && isset($params['dni'])){
+		if(is_array($params) && isset($params['cifnif'])){
 			$resultUser = $this->getdata->UserByDni($params);
 		}else{
-			$params['dni'] = 0;
+			$params['cifnif'] = 0;
 		}
 
-		if(isset($resultUser['id'])){
+		/*if(isset($resultUser['id'])){
 			$paramsParent['id'] = $resultUser['id'];
 			$resultUser2 =  $this->getdata->ChildrenByParent($paramsParent);
-		}
+		}*/
 
 		$status = FALSE;
 		if(count($resultUser) > 0)
@@ -75,9 +75,9 @@ class Get extends CI_Controller {
 
 		$data['data']['elements'] = array(
 			'status' => $status,
-			'id' => $params['dni'],
+			'id' => $params['cifnif'],
 			'message' => $resultUser,
-			'message2' => $resultUser2
+			//'message2' => $resultUser2
 			);
 		$data['view'] = "/response/index";
 		$this->load->view($data['view'], $data);

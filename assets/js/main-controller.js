@@ -101,22 +101,22 @@ stequipoApp.controller('setUser', ['$scope', '$timeout', 'dataService', function
 	$scope.getUser = function(){
 		$scope.control.send = false;
 		var url = 'get/userinfo';
-		var dniValue = $scope.setUserForm.dni;
+		var dniValue = $scope.setUserForm.cifnif;
 		if(dniValue.length > 5){
 			dataService.getData($scope.setUserForm, url, function(dataResponse){
 				if(typeof dataResponse.data.elements.status != 'undefined' && dataResponse.data.elements.status == true){
 					$timeout(function () {
 						$scope.setUserForm = {
-							"dni": dataResponse.data.elements.message.dni,
-							"first_name": dataResponse.data.elements.message.first_name,
-							"last_name": dataResponse.data.elements.message.last_name,
-							"mail": dataResponse.data.elements.message.mail,
-							"address": dataResponse.data.elements.message.address,
-							"phone": parseInt(dataResponse.data.elements.message.phone),
-							"is_initial": dataResponse.data.elements.message.is_initial,
+							"cifnif": dataResponse.data.elements.message.cifnif,
+							"nombre": dataResponse.data.elements.message.nombre,
+							"razonsocial": dataResponse.data.elements.message.razonsocial,
+							"email": dataResponse.data.elements.message.email,
+							"direccion": dataResponse.data.elements.message.direccion,
+							"telefono1": parseInt(dataResponse.data.elements.message.telefono1),
+							// "is_initial": dataResponse.data.elements.message.is_initial,
 							"birthday": new Date(dataResponse.data.elements.message.birthday),
-							"register": new Date(dataResponse.data.elements.message.register),
-							"id_rol": dataResponse.data.elements.message.id_rol
+							"fechaalta": new Date(dataResponse.data.elements.message.fechaalta)
+							// "id_rol": '2'
 						};
 
 						var group = parseInt(dataResponse.data.elements.message.group);
@@ -134,7 +134,7 @@ stequipoApp.controller('setUser', ['$scope', '$timeout', 'dataService', function
 					}, 500);
 				}else{
 					$scope.setUserForm = {
-						"dni": dniValue
+						"cifnif": dniValue
 					};
 				}
 

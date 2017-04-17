@@ -13,8 +13,8 @@ class Getdata extends CI_Model {
 	public function Users()
 	{
 		$result = FALSE;
-		$this->db->select('*');
-		$query = $this->db->get('user');
+		$this->db->select('codcliente, cifnif, nombre');
+		$query = $this->db->get('clientes');
 		$result = $query->result_array();
 		return $result;
 	}
@@ -23,7 +23,7 @@ class Getdata extends CI_Model {
 	{
 		$result = FALSE;
 		$this->db->select('*');
-		$query = $this->db->get('roles');
+		$query = $this->db->get('ste_roles');
 		$result = $query->result_array();
 		return $result;
 	}
@@ -46,12 +46,11 @@ class Getdata extends CI_Model {
 	public function UserByDni($params)
 	{
 		$result = FALSE;
-		$select = "usr.id, usr.first_name, usr.last_name, usr.dni, usr.mail, usr.address, usr.phone, usr.other_data, usr.birthday, pu.parent, pu.children, pu.group, pu.is_initial, pu.register, au.id_rol";
+		$select = "*";
 		$this->db->select($select);
-		$this->db->from('user usr');
-		$this->db->join('parent_user pu', 'usr.id = pu.user');
-		$this->db->join('admin_user au', 'usr.id_admin_user = au.id');
-		$this->db->where('usr.dni', $params['dni']);
+		$this->db->from('clientes cl');
+		$this->db->join('dirclientes dcl', 'cl.codcliente = dcl.codcliente');
+		$this->db->where('cl.cifnif', $params['cifnif']);
 		$this->db->limit(1);
 		$query = $this->db->get();
 		$result = $query->row_array();
