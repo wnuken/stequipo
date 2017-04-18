@@ -3,6 +3,7 @@
 html {
   position: relative;
   min-height: 100%;
+  background: #222d32;
 }
 
 body {
@@ -25,6 +26,16 @@ body {
 -------------------------------------------------- */
 /* Not required for template or sticky footer method. */
 
+
+.navbar-brand > img {
+  display: block;
+  width: 178px;
+  float: left;
+  top: -14px;
+  position: relative;
+}
+
+
 body > .container, body >  .container-fluid {
   padding: 60px 15px 0;
   margin-bottom: 60px;
@@ -43,14 +54,6 @@ code {
   font-size: 80%;
 }
 
-.navbar-brand > img {
-  display: block;
-  width: 178px;
-  float: left;
-  top: -14px;
-  position: relative;
-}
-
 .md-datepicker-calendar-pane.md-pane-open {
   z-index: 1100;
 }
@@ -59,30 +62,10 @@ code {
   z-index: 1100;
 }
 
-.progress-xs {
-  height: 5px;
-}
-
-.main-side-bar-container {
-  width: 235px;
-}
-
-.main-side-bar1-container {
-  background: #fff;
-}
-
-.main-side-bar {
-  background-color: #222d32;
-  left: 0px;
-  position: absolute;
-  min-width: 235px;
-  top: -8px;
-}
-
 .list-group-item.active, .list-group-item.active:hover, .list-group-item.active:focus {
   z-index: 2;
-  color: #fff;
-  background-color: #1e282c;
+  color: #000;
+  background-color: #ccc;
   border-color: #1e282c;
 }
 
@@ -95,6 +78,9 @@ code {
   border: 1px solid #222d32;
 }
 
+.progress-xs {
+  height: 5px;
+}
 
 li.user-header {
   height: 75px;
@@ -133,6 +119,36 @@ a:hover, a:focus {
     background-color: #222d32;
 }
 
+/*
+
+
+
+
+
+
+.main-side-bar-container {
+  width: 235px;
+}
+
+.main-side-bar {
+  background-color: #222d32;
+  left: 0px;
+  position: absolute;
+  min-width: 235px;
+  top: -8px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 .main-sidebar, .left-side {
     position: absolute;
@@ -151,3 +167,4 @@ a:hover, a:focus {
 .sidebar {
     padding-bottom: 10px;
 }
+*/
