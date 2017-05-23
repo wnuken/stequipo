@@ -13,11 +13,23 @@ class Getdata extends CI_Model {
 	public function Users()
 	{
 		$result = FALSE;
+		$this->db->select('*');
+		$query = $this->db->get('clientes');
+		$result = $query->result_array();
+		return $result;
+	}
+
+	public function usersFilter()
+	{
+		$result = FALSE;
 		$this->db->select('codcliente, cifnif, nombre');
 		$query = $this->db->get('clientes');
 		$result = $query->result_array();
 		return $result;
 	}
+
+
+	
 
 	public function Roles()
 	{

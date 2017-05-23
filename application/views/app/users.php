@@ -32,7 +32,14 @@
 				<div class="col-xs-12 col-sm-12 col-md-12">
 					<legend>Usuarios</legend>
 				</div>
-			</div>	
+			</div>
+			
+			<div class="row">
+				<div class="col-xm-12 col-sm-12 col-md-12">
+					<div ui-grid="gridOptions" class="myGrid"></div>
+				</div>
+			</div>
+
 			<div class="row">
 				<div class="col-xs-6 col-sm-4 col-md-3">
 					<button type="button" class="btn btn-info btn-lg btn-block" data-toggle="modal" data-target="#editUser">

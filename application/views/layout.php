@@ -11,10 +11,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <link rel="icon" href="<?php echo base_url("/assets/images/favicon.png"); ?>">
 <head>
 	<link href="<?php echo base_url("/assets/vendor/bootstrap/css/bootstrap.min.css"); ?>" rel="stylesheet"/>
-	<!--link href="<?php echo base_url("/assets/vendor/angularjs/material/css/angular-material.min.css"); ?>" rel="stylesheet"/-->
+	<!--link href="<?php echo base_url("/assets/vendor/angularjs/material/css/angular-material.min.css"); ?>" rel="stylesheet"/ -->
 	<link href="https://cdn.gitcdn.link/cdn/angular/bower-material/v1.1.3/angular-material.css" rel="stylesheet"/>
 	<link href="<?php echo base_url("/assets/vendor/bootstrap/css/spacelab.css"); ?>" rel="stylesheet"/>
 	<link href="<?php echo base_url("/assets/vendor/font-awesome/css/font-awesome.min.css"); ?>" rel="stylesheet"/>
+	<link href="<?php echo base_url("/assets/vendor/angularjs/material/css/ng-grid.css"); ?>" rel="stylesheet"/>
 	<link href="<?php echo base_url("/assets/css/styles.css"); ?>" rel="stylesheet"/>
 	<meta charset="utf-8">
 	<title>Servicio Trabajo en Equipo</title>
@@ -86,6 +87,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <script src="<?php echo base_url("/assets/vendor/angularjs/material/js/angular-route.min.js"); ?>" rel="stylesheet"></script>
 <script src="<?php echo base_url("/assets/vendor/angularjs/material/js/angular-aria.min.js"); ?>" rel="stylesheet"></script>
 <script src="<?php echo base_url("/assets/vendor/angularjs/material/js/angular-messages.min.js"); ?>" rel="stylesheet"></script>
+
+<script src="<?php echo base_url("/assets/vendor/angularjs/material/js/ui-grid.min.js"); ?>" rel="stylesheet"></script>
 
 <script src="<?php echo base_url("/assets/vendor/angularjs/material/js/angular-material.min.js"); ?>" rel="stylesheet"></script>
 <!--script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/t-114/svg-assets-cache.js" rel="stylesheet"></script-->

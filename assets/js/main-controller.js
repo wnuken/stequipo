@@ -1,7 +1,7 @@
 var baseUrl = $('div#base-url').html();
 
 var $generalMenu = $("nav#genaralMenu");
-var stequipoApp = angular.module('stequipoApp',['ngMaterial', 'ngMessages']);
+var stequipoApp = angular.module('stequipoApp',['ngMaterial', 'ngMessages', 'ui.grid']);
 
 stequipoApp.service('dataService', function($http) {
 	this.getData = function(params, path, callbackFunc){
@@ -57,9 +57,57 @@ stequipoApp.controller('Dashboard', ['$scope', '$window', function($scope, $wind
 	};
 }]);
 
-stequipoApp.controller('Users', ['$scope', '$window', function($scope, $window) {
+stequipoApp.controller('Users', ['$scope', '$window', 'dataService', function($scope, $window, dataService) {
 	console.log("usuarios");
 	$('li#menu-users', $generalMenu).addClass('active');
+	$scope.Users = {};
+
+	var usersParams = {
+		elements: 'all',
+		url: 'get/users'
+	};
+
+	dataService.getData(usersParams.elements, usersParams.url, function(dataResponse){
+		console.log({"Usuarios ": dataResponse});
+		if(typeof dataResponse.data.elements != 'undefined' && dataResponse.data.elements.status === true){
+			$scope.gridOptions.data = dataResponse.data.elements.message;
+		};
+	});
+
+	$scope.gridOptions = {
+		modifierKeysToMultiSelectCells: true,
+		showGridFooter: true,
+		enableFiltering: true,
+	};
+
+
+	$scope.titles = {
+		codcliente: "Código",
+		fechaalta: "Fecha Inscripción",
+		fechabaja: "Fecha Salida",
+		nombre: "Nombre",
+		cifnif: "Documento",
+		email: "Correo",
+		diaspago: "días de pago",
+		observaciones: "Observaciones",
+		telefono1: "Teléfono",
+	};
+
+
+	$scope.gridOptions.columnDefs = [
+	{ name: 'codcliente', width:'150', displayName: $scope.titles.codcliente},
+	{ name: 'fechaalta', width:'150', displayName: $scope.titles.fechaalta},
+	{ name: 'fechabaja', width:'150', displayName: $scope.titles.fechabaja},
+	{ name: 'nombre', width:'250', displayName: $scope.titles.nombre},
+	{ name: 'cifnif', width:'150', displayName: $scope.titles.cifnif},
+	{ name: 'email', width:'250', displayName: $scope.titles.email},
+	{ name: 'diaspago', width:'150', displayName: $scope.titles.diaspago},
+	{ name: 'observaciones', width:'150', displayName: $scope.titles.observaciones},
+	{ name: 'telefono1', width:'150', displayName: $scope.titles.telefono1}
+	//{ name: "opciones",  cellTemplate:'./opcionreporte'}
+	];
+
+
 
 	$scope.goUrl = function(params){
 		console.log(params);
@@ -80,7 +128,7 @@ stequipoApp.controller('setUser', ['$scope', '$timeout', 'dataService', function
 	
 	$('div#setUserController').removeClass('hide');
 
-	var urlUser = 'get/users';
+	var urlUser = 'get/usersfilter';
 
 	dataService.getData($scope.setUserForm, urlUser, function(dataResponse){
 		console.log(dataResponse);
